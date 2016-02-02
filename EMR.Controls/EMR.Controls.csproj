@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9A834084-624C-4698-8CA4-1B57E73A2574}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EMR.Controls</RootNamespace>
+    <AssemblyName>EMR.Controls</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AxTx4oleLib, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TxLib\AxTx4oleLib.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=11.0.0.0, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TxLib\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Tx4oleLib, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TxLib\Tx4oleLib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Action\DataSourceManage.cs" />
+    <Compile Include="Action\emrController.cs" />
+    <Compile Include="Action\EmrToolTipManage.cs" />
+    <Compile Include="Action\IEmrDataSource.cs" />
+    <Compile Include="Action\IEmrDbHelper.cs" />
+    <Compile Include="Action\IEmrRecord.cs" />
+    <Compile Include="Action\IEmrTemplateDbHelper.cs" />
+    <Compile Include="Action\IEmrTemplateTree.cs" />
+    <Compile Include="Action\IEmrWriteDbHelper.cs" />
+    <Compile Include="Action\IEmrWriteTree.cs" />
+    <Compile Include="Action\KnowledgeManage.cs" />
+    <Compile Include="Action\RTFWriter.cs" />
+    <Compile Include="ColorPickerDropDownEr.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DialogTitle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DialogTitle.Designer.cs">
+      <DependentUpon>DialogTitle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EMREdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EMREdit.Designer.cs">
+      <DependentUpon>EMREdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmrRecord.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EmrRecord.Designer.cs">
+      <DependentUpon>EmrRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmrTemplateTree.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EmrTemplateTree.Designer.cs">
+      <DependentUpon>EmrTemplateTree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmrToolTip\CustomToolTip.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EmrToolTip\CustomToolTip.Designer.cs">
+      <DependentUpon>CustomToolTip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmrToolTip\DateToolTip.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EmrToolTip\DateToolTip.Designer.cs">
+      <DependentUpon>DateToolTip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmrToolTip\GridToolTip.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EmrToolTip\GridToolTip.Designer.cs">
+      <DependentUpon>GridToolTip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmrToolTip\ListToolTip.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EmrToolTip\ListToolTip.Designer.cs">
+      <DependentUpon>ListToolTip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmrToolTip\MultiListToolTip.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EmrToolTip\MultiListToolTip.Designer.cs">
+      <DependentUpon>MultiListToolTip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmrToolTip\TimeToolTip.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EmrToolTip\TimeToolTip.Designer.cs">
+      <DependentUpon>TimeToolTip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmrWriteTree.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EmrWriteTree.Designer.cs">
+      <DependentUpon>EmrWriteTree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\EmrCatalogue.cs" />
+    <Compile Include="Entity\EmrTemplateTree.cs" />
+    <Compile Include="Entity\EmrWriteRecord.cs" />
+    <Compile Include="FrmTableColRow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTableColRow.Designer.cs">
+      <DependentUpon>FrmTableColRow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SaveAsTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaveAsTemplate.Designer.cs">
+      <DependentUpon>SaveAsTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectEmrTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectEmrTemplate.Designer.cs">
+      <DependentUpon>SelectEmrTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Signature.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Signature.Designer.cs">
+      <DependentUpon>Signature.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StorageList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StorageList.Designer.cs">
+      <DependentUpon>StorageList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WriteDomain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WriteDomain.Designer.cs">
+      <DependentUpon>WriteDomain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WriteHelper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WriteHelper.Designer.cs">
+      <DependentUpon>WriteHelper.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DialogTitle.resx">
+      <DependentUpon>DialogTitle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EMREdit.resx">
+      <DependentUpon>EMREdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmrRecord.resx">
+      <DependentUpon>EmrRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmrTemplateTree.resx">
+      <DependentUpon>EmrTemplateTree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmrToolTip\CustomToolTip.resx">
+      <DependentUpon>CustomToolTip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmrToolTip\DateToolTip.resx">
+      <DependentUpon>DateToolTip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmrToolTip\GridToolTip.resx">
+      <DependentUpon>GridToolTip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmrToolTip\ListToolTip.resx">
+      <DependentUpon>ListToolTip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmrToolTip\MultiListToolTip.resx">
+      <DependentUpon>MultiListToolTip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmrToolTip\TimeToolTip.resx">
+      <DependentUpon>TimeToolTip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmrWriteTree.resx">
+      <DependentUpon>EmrWriteTree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTableColRow.resx">
+      <DependentUpon>FrmTableColRow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaveAsTemplate.resx">
+      <DependentUpon>SaveAsTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectEmrTemplate.resx">
+      <DependentUpon>SelectEmrTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Signature.resx">
+      <DependentUpon>Signature.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StorageList.resx">
+      <DependentUpon>StorageList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WriteDomain.resx">
+      <DependentUpon>WriteDomain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WriteHelper.resx">
+      <DependentUpon>WriteHelper.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Document.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FolderClosed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FolderOpen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BaseControls\BaseControls.csproj">
+      <Project>{F3C417B6-9F65-4C40-83A1-EBA50E2D4AA1}</Project>
+      <Name>BaseControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EfwControls\EfwControls.csproj">
+      <Project>{A7618987-492B-4D5D-92C2-0381EC45817F}</Project>
+      <Name>EfwControls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

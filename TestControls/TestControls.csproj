@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B2B02AE1-E37A-4FF6-AECA-FC5F06F085DE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TestControls</RootNamespace>
+    <AssemblyName>TestControls</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationIcon>demo_32px_29039_easyicon.net.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar2, Version=11.0.0.0, Culture=neutral, PublicKeyToken=c39c3242a43eee2b" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustomPatientInfo.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCustomDocument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCustomDocument.Designer.cs">
+      <DependentUpon>FrmCustomDocument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEmrRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEmrRecord.Designer.cs">
+      <DependentUpon>FrmEmrRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBedCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBedCard.Designer.cs">
+      <DependentUpon>FrmBedCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDemo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDemo.Designer.cs">
+      <DependentUpon>FrmDemo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEmrRecord2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEmrRecord2.Designer.cs">
+      <DependentUpon>FrmEmrRecord2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEmrRecord3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEmrRecord3.Designer.cs">
+      <DependentUpon>FrmEmrRecord3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrescription.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrescription.Designer.cs">
+      <DependentUpon>FrmPrescription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCustomDocument.resx">
+      <DependentUpon>FrmCustomDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEmrRecord.resx">
+      <DependentUpon>FrmEmrRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBedCard.resx">
+      <DependentUpon>FrmBedCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDemo.resx">
+      <DependentUpon>FrmDemo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEmrRecord2.resx">
+      <DependentUpon>FrmEmrRecord2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEmrRecord3.resx">
+      <DependentUpon>FrmEmrRecord3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrescription.resx">
+      <DependentUpon>FrmPrescription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="TestEmrWriteDbHelper.cs" />
+    <Compile Include="TestPrescripttionDbHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BaseControls\BaseControls.csproj">
+      <Project>{F3C417B6-9F65-4C40-83A1-EBA50E2D4AA1}</Project>
+      <Name>BaseControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BedCard.Controls\BedCard.Controls.csproj">
+      <Project>{C1000A00-4DC5-4DEC-BB7B-B987B95215ED}</Project>
+      <Name>BedCard.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomDocument.Controls\CustomDocument.Controls.csproj">
+      <Project>{A5ED267F-EDFC-478B-8A7B-A0B01B698F70}</Project>
+      <Name>CustomDocument.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EfwControls\EfwControls.csproj">
+      <Project>{A7618987-492B-4D5D-92C2-0381EC45817F}</Project>
+      <Name>EfwControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EMR.Controls\EMR.Controls.csproj">
+      <Project>{9A834084-624C-4698-8CA4-1B57E73A2574}</Project>
+      <Name>EMR.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Prescription.Controls\Prescription.Controls.csproj">
+      <Project>{BCE47D8E-938F-4D86-AB2D-2DB2719E7E9F}</Project>
+      <Name>Prescription.Controls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="demo_32px_29039_easyicon.net.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
