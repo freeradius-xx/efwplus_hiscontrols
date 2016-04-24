@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,9 +10,15 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TestControls</RootNamespace>
     <AssemblyName>TestControls</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ApplicationIcon>demo_32px_29039_easyicon.net.ico</ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,6 +28,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,6 +37,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,6 +48,7 @@
     <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
     <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
     <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -50,9 +59,19 @@
     <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
     <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
     <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevComponents.DotNetBar2, Version=11.0.0.0, Culture=neutral, PublicKeyToken=c39c3242a43eee2b" />
+    <Reference Include="DevComponents.DotNetBar2, Version=11.0.0.0, Culture=neutral, PublicKeyToken=c39c3242a43eee2b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TxLib\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
+    <Reference Include="EfwControls">
+      <HintPath>..\TxLib\EfwControls.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="NSoup, Version=0.7.1.0, Culture=neutral, PublicKeyToken=6d44e53f0a65e802, processorArchitecture=MSIL" />
+    <Reference Include="NVelocity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -77,6 +96,18 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMRecordFirst.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMRecordFirst.Designer.cs">
+      <DependentUpon>FrmMRecordFirst.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTemperature.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTemperature.Designer.cs">
+      <DependentUpon>FrmTemperature.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmCustomDocument.cs">
       <SubType>Form</SubType>
@@ -125,6 +156,12 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmMRecordFirst.resx">
+      <DependentUpon>FrmMRecordFirst.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTemperature.resx">
+      <DependentUpon>FrmTemperature.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCustomDocument.resx">
       <DependentUpon>FrmCustomDocument.cs</DependentUpon>
     </EmbeddedResource>
@@ -157,6 +194,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -192,17 +230,21 @@
       <Project>{A5ED267F-EDFC-478B-8A7B-A0B01B698F70}</Project>
       <Name>CustomDocument.Controls</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EfwControls\EfwControls.csproj">
-      <Project>{A7618987-492B-4D5D-92C2-0381EC45817F}</Project>
-      <Name>EfwControls</Name>
-    </ProjectReference>
     <ProjectReference Include="..\EMR.Controls\EMR.Controls.csproj">
       <Project>{9A834084-624C-4698-8CA4-1B57E73A2574}</Project>
       <Name>EMR.Controls</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MRecordFirst.Controls\MRecordFirst.Controls.csproj">
+      <Project>{00D88B93-77EC-4B35-8B24-8BF8EA77D72D}</Project>
+      <Name>MRecordFirst.Controls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Prescription.Controls\Prescription.Controls.csproj">
       <Project>{BCE47D8E-938F-4D86-AB2D-2DB2719E7E9F}</Project>
       <Name>Prescription.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Temperature.Controls\Temperature.Controls.csproj">
+      <Project>{D605629B-C30D-46CA-A031-9F4650B1F6CD}</Project>
+      <Name>Temperature.Controls</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

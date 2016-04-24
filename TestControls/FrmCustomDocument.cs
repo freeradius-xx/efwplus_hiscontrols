@@ -24,5 +24,15 @@ namespace TestControls
         {
 
         }
+
+        private void tableLayoutPanel1_DoubleClick(object sender, EventArgs e)
+        {
+             
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            this.customDocumentControl1.Preview();
+        }
     }
 }

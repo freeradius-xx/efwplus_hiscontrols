@@ -51,5 +51,17 @@ namespace TestControls
             FrmEmrRecord3 fer = new FrmEmrRecord3();
             fer.ShowDialog();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            FrmTemperature frm = new FrmTemperature();
+            frm.ShowDialog();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            FrmMRecordFirst frm = new FrmMRecordFirst();
+            frm.ShowDialog();
+        }
     }
 }

@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Other", "Other", "{E5B6B171-B4ED-4E91-8A1B-15E65BCE7340}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestControls", "TestControls\TestControls.csproj", "{B2B02AE1-E37A-4FF6-AECA-FC5F06F085DE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMR.Controls", "EMR.Controls\EMR.Controls.csproj", "{9A834084-624C-4698-8CA4-1B57E73A2574}"
@@ -22,10 +24,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaseControls", "BaseControls\BaseControls.csproj", "{F3C417B6-9F65-4C40-83A1-EBA50E2D4AA1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateLicense", "GenerateLicense\GenerateLicense.csproj", "{91704EFC-8A01-4D47-8B03-301C7A5CE6B9}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Other", "Other", "{E5B6B171-B4ED-4E91-8A1B-15E65BCE7340}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfwControls", "EfwControls\EfwControls.csproj", "{A7618987-492B-4D5D-92C2-0381EC45817F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,6 +66,7 @@ Global
 		{D605629B-C30D-46CA-A031-9F4650B1F6CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D605629B-C30D-46CA-A031-9F4650B1F6CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D605629B-C30D-46CA-A031-9F4650B1F6CD}.Debug|x86.ActiveCfg = Debug|x86
+		{D605629B-C30D-46CA-A031-9F4650B1F6CD}.Debug|x86.Build.0 = Debug|x86
 		{D605629B-C30D-46CA-A031-9F4650B1F6CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D605629B-C30D-46CA-A031-9F4650B1F6CD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D605629B-C30D-46CA-A031-9F4650B1F6CD}.Release|x86.ActiveCfg = Release|Any CPU
@@ -80,6 +79,7 @@ Global
 		{00D88B93-77EC-4B35-8B24-8BF8EA77D72D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{00D88B93-77EC-4B35-8B24-8BF8EA77D72D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00D88B93-77EC-4B35-8B24-8BF8EA77D72D}.Debug|x86.ActiveCfg = Debug|x86
+		{00D88B93-77EC-4B35-8B24-8BF8EA77D72D}.Debug|x86.Build.0 = Debug|x86
 		{00D88B93-77EC-4B35-8B24-8BF8EA77D72D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00D88B93-77EC-4B35-8B24-8BF8EA77D72D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{00D88B93-77EC-4B35-8B24-8BF8EA77D72D}.Release|x86.ActiveCfg = Release|Any CPU
@@ -110,18 +110,12 @@ Global
 		{91704EFC-8A01-4D47-8B03-301C7A5CE6B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91704EFC-8A01-4D47-8B03-301C7A5CE6B9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{91704EFC-8A01-4D47-8B03-301C7A5CE6B9}.Release|x86.ActiveCfg = Release|Any CPU
-		{A7618987-492B-4D5D-92C2-0381EC45817F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A7618987-492B-4D5D-92C2-0381EC45817F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A7618987-492B-4D5D-92C2-0381EC45817F}.Debug|x86.ActiveCfg = Debug|x86
-		{A7618987-492B-4D5D-92C2-0381EC45817F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A7618987-492B-4D5D-92C2-0381EC45817F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A7618987-492B-4D5D-92C2-0381EC45817F}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{91704EFC-8A01-4D47-8B03-301C7A5CE6B9} = {E5B6B171-B4ED-4E91-8A1B-15E65BCE7340}
 		{B2B02AE1-E37A-4FF6-AECA-FC5F06F085DE} = {E5B6B171-B4ED-4E91-8A1B-15E65BCE7340}
+		{91704EFC-8A01-4D47-8B03-301C7A5CE6B9} = {E5B6B171-B4ED-4E91-8A1B-15E65BCE7340}
 	EndGlobalSection
 EndGlobal

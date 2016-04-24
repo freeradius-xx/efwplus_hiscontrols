@@ -303,9 +303,9 @@ namespace BedCard.Controls
             Graphics g = ((UserControl)sender).CreateGraphics();
             PointButton _pbNew = PointButton.pbNone;
 
-            if (Bed.IsUsed)
-            {
 
+            if (Bed.IsUsed && _selectedBed != null && Bed.Equals(_selectedBed))
+            {
                 if (MouseInRect(e.X, e.Y, _rectHeadPage))
                     _pbNew = PointButton.pbHeadPage;
                 else if (MouseInRect(e.X, e.Y, _rectTemperature))
@@ -314,8 +314,10 @@ namespace BedCard.Controls
                     _pbNew = PointButton.pbAdvice;
                 else if (MouseInRect(e.X, e.Y, _rectApply))
                     _pbNew = PointButton.pbApply;
-
-                _rectBed = new Rectangle(1, 1, 30+26, _rectTitle.Height - 2);
+            }
+            if (Bed.IsUsed)
+            {
+                _rectBed = new Rectangle(1, 1, 30 + 26, _rectTitle.Height - 2);
             }
             else
             {
@@ -359,7 +361,7 @@ namespace BedCard.Controls
             DrawContext(e, _bed);
             //画图标按钮
 
-            if (_bed.IsUsed == true)  //未使用状态, 在中间画标题
+            if (_bed.IsUsed == true && _selectedBed!=null && _bed.Equals(_selectedBed))  //未使用状态, 在中间画标题
             {
                 DrawNurse(e, _bed);
                 DrawButton(e.Graphics, _rectHeadPage, Resources.病案首页, ButtonState.bsNormal);

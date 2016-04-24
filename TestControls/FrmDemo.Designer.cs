@@ -89,6 +89,7 @@
             this.button5.TabIndex = 5;
             this.button5.Text = "三测单";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
@@ -98,6 +99,7 @@
             this.button6.TabIndex = 4;
             this.button6.Text = "病案首页";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 

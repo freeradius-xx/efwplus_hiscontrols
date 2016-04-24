@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ *表单控件
+ * 1.以纸张形式展示界面
+ * 2.可以直接预览、打印
+ * 3.自动处理数据
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +16,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 using CustomDocument.Controls.Properties;
+using System.Drawing.Printing;
 
 namespace CustomDocument.Controls
 {
@@ -65,17 +72,17 @@ namespace CustomDocument.Controls
 
         private DisplayForm _PageDisplayForm=new DisplayForm("A5");
 
-        private List<DisplayForm> _customDisplayForm;
+        //private List<DisplayForm> _customDisplayForm;
         [Description("自定义页面格式")]
-        public List<DisplayForm> PageDisplayForm
+        public DisplayForm CustomPageDisplayForm
         {
             get
             {
-                return _customDisplayForm;
+                return _PageDisplayForm;
             }
             set
             {
-                _customDisplayForm = value;
+                _PageDisplayForm = value;
             }
         }
 
@@ -221,7 +228,224 @@ namespace CustomDocument.Controls
             pcbFormBack.Left = Math.Max(8, (this.Width - 30 - pcbFormBack.Width) / 2);
         }
 
+        /// <summary>
+        /// 取得打印比例坐标转换参数
+        /// </summary>
+        private STYLE_CONVERT GetStyleConvert()
+        {
+            STYLE_CONVERT style = new STYLE_CONVERT();
+            Graphics g = Application.OpenForms[0].CreateGraphics();
+            style.xPixPermm = g.DpiX / 254.0f;   //每0.1mm对应屏幕上的点数，用于计算偏移量
+            style.yPixPermm = g.DpiY / 254.0f;
+            style.xScrDPIDiff = g.DpiX / 96.0f; // 等于1
+            style.yScrDPIDiff = g.DpiY / 96.0f;
+            style.fDPIX = g.DpiX; //屏幕DPI
+            style.fDPIY = g.DpiY;
+            g.Dispose();
+            return style;
+        }
+
+        private Font GetFont(Size s, string P_String, Font regularFont)
+        {
+            Bitmap _bitmap = new Bitmap(s.Width, s.Height);
+            string sFontName = regularFont.Name;
+            float fontsize = regularFont.Size;
+            Graphics _graphics = Graphics.FromImage(_bitmap);
+            for (Size _size = s; _size.Width >= s.Width || _size.Height >= s.Height; fontsize -= 0.1f)
+            {
+                Font font_1 = new Font(sFontName, fontsize);
+                _size = _graphics.MeasureString(P_String, font_1).ToSize();
+            }
+            if (fontsize < 6)
+            {
+                return new Font(sFontName, 6f);
+            }
+            else
+            {
+                return new Font(sFontName, fontsize - 1f);
+            }
+        }
+
+        public bool Print(Graphics g)
+        {
+            g.PageUnit = GraphicsUnit.Pixel;
+            g.SmoothingMode = SmoothingMode.HighQuality;
+            g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+            STYLE_CONVERT style = GetStyleConvert();
+            float xPixPerIn = g.DpiX / style.fDPIX; // 打印机DPI/屏幕DPI
+            float yPixPerIn = g.DpiY / style.fDPIY;
+            float iTopOffset = 0; //自动调整位置的偏移量 对应屏幕DPI
+
+            Control ctrl = pcbFormBack;
+            //int iLeft = _PageDisplayForm.LeftMarign;
+            //int iTop = _PageDisplayForm.TopMarign;
+            //int iWidth = _PageDisplayForm.PageWidth;
+            //int iHeight = _PageDisplayForm.PageHeight;
+
+            Pen p = new Pen(Color.Black, 1f);
+            RectangleF rectBound = new RectangleF();
+            SolidBrush foreBrush = new SolidBrush(Color.Black);
+            g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+
+
+            foreach (Control item in ctrl.Controls)
+            {
+                if (item.Visible)
+                {
+                    Font regularFont = new Font("宋体", item.Font.Size);//item.Font;
+                    StringFormat strFormat = new StringFormat();
+                    strFormat.Alignment = StringAlignment.Near;
+                    strFormat.LineAlignment = StringAlignment.Near;
+
+                    Form_POS sobj = new Form_POS();
+                    //原来存的值为去掉边界后的像素值，边界单位为0.1mm
+                    sobj.Pos_Left = item.Left * style.xScrDPIDiff;
+                    sobj.Pos_Top = item.Top * style.yScrDPIDiff;
+                    sobj.Pos_Right = item.Right * style.xScrDPIDiff;
+                    sobj.Pos_Bottom = item.Bottom * style.yScrDPIDiff;
+
+                    //坐标变换到屏幕位置, 自动调整尺寸是需要加上iTopOffset
+                    //sobj.Pos_Top += _PageDisplayForm.TopMarign * style.yPixPermm + iTopOffset;
+                    //sobj.Pos_Bottom += _PageDisplayForm.TopMarign * style.yPixPermm + iTopOffset;
+
+                    //sobj.Pos_Left += _PageDisplayForm.LeftMarign * style.xPixPermm;
+                    //sobj.Pos_Right += _PageDisplayForm.LeftMarign * style.xPixPermm;
+
+                    //由屏幕位置变换到打印机位置
+                    sobj.Pos_Top = sobj.Pos_Top * yPixPerIn;
+                    sobj.Pos_Bottom = sobj.Pos_Bottom * yPixPerIn;
+                    sobj.Pos_Left = sobj.Pos_Left * xPixPerIn;
+                    sobj.Pos_Right = sobj.Pos_Right * xPixPerIn;
+
+                    rectBound.X = sobj.Pos_Left;
+                    rectBound.Y = sobj.Pos_Top;
+                    rectBound.Width = sobj.Width();
+                    rectBound.Height = sobj.Height();
+
+                    #region SingleLine
+                    if (item is SingleLineX || item is SingleLineY)
+                    {
+                        g.FillRectangle(foreBrush, rectBound);
+                    }
+                    #endregion
+                    #region Label
+                    else if (item is Label)
+                    {
+                        Label objItem = item as Label;
+
+                        if (objItem.TextAlign == ContentAlignment.MiddleCenter)
+                        {
+                            strFormat.Alignment = StringAlignment.Center;
+                            strFormat.LineAlignment = StringAlignment.Center;
+                        }
+                        else
+                        {
+                            strFormat.Alignment = StringAlignment.Near;
+                            strFormat.LineAlignment = StringAlignment.Center;
+                        }
+
+                        g.DrawString(objItem.Text, GetFont(objItem.Size, objItem.Text, regularFont), foreBrush, rectBound, strFormat);
+                    }
+                    #endregion
+                    #region DateTimePicker
+                    else if (item is DateTimePicker)
+                    {
+                        DateTimePicker objItem = item as DateTimePicker;
+
+                        strFormat.Alignment = StringAlignment.Near;
+                        strFormat.LineAlignment = StringAlignment.Center;
+                        g.DrawString(objItem.Value.ToString(objItem.CustomFormat), regularFont,
+                            new SolidBrush(objItem.ForeColor), rectBound, strFormat);
+                    }
+                    #endregion
+                    #region TextBox
+                    else if (item is TextBox)
+                    {
+                        TextBox objItem = item as TextBox;
+                        if (objItem.Visible)
+                        {
+
+                            if (objItem.TextAlign == HorizontalAlignment.Center)
+                                strFormat.Alignment = StringAlignment.Center;
+                            else if (objItem.TextAlign == HorizontalAlignment.Left)
+                                strFormat.Alignment = StringAlignment.Near;
+                            else
+                                strFormat.Alignment = StringAlignment.Far;
+                            strFormat.LineAlignment = StringAlignment.Center;
+
+                            g.DrawString(objItem.Text, GetFont(objItem.Size, objItem.Text, regularFont),
+                               new SolidBrush(objItem.ForeColor), rectBound, strFormat);
+                        }
+                    }
+                    #endregion
+                    #region CheckBox
+                    else if (item is CheckBox)
+                    {
+                        CheckBox objItem = item as CheckBox;
+
+                        if (objItem.Checked)
+                        {
+
+                            strFormat.Alignment = StringAlignment.Center;
+                            strFormat.LineAlignment = StringAlignment.Center;
+                            g.DrawString("√", regularFont, new SolidBrush(objItem.ForeColor), rectBound, strFormat);
+                        }
+                        g.DrawString(objItem.Text, GetFont(objItem.Size, objItem.Text, regularFont),
+                               new SolidBrush(objItem.ForeColor), rectBound, strFormat);
+                    }
+                    #endregion
+                    #region radioButton
+                    else if (item is RadioButton)
+                    {
+                        RadioButton objItem = item as RadioButton;
+
+                        if (objItem.Checked)
+                        {
+                            strFormat.Alignment = StringAlignment.Center;
+                            strFormat.LineAlignment = StringAlignment.Center;
+                            g.DrawString("√", regularFont, new SolidBrush(objItem.ForeColor), rectBound, strFormat);
+                        }
+                        g.DrawString(objItem.Text, GetFont(objItem.Size, objItem.Text, regularFont),
+                              new SolidBrush(objItem.ForeColor), rectBound, strFormat);
+                    }
+                    #endregion
+                }
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// 预览
+        /// </summary>
+        public void Preview()
+        {
+            PrintDocument printDoc = new PrintDocument();
+            //设置打印用的纸张 当设置为Custom的时候，可以自定义纸张的大小，还可以选择A4,A5等常用纸型
+            int iWidth = (int)(_PageDisplayForm.PageWidth * 100f / (10f * 25.4f));
+            int iHeight = (int)(_PageDisplayForm.PageHeight * 100f / (10f * 25.4f));
+            printDoc.DefaultPageSettings.PaperSize = new PaperSize("Custom", iWidth, iHeight); //百分之一英寸
+            printDoc.PrintPage += new PrintPageEventHandler(printer_PrintPage);
+            PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
+            printPreviewDialog.Document = printDoc;
+            printPreviewDialog.ShowIcon = false;
+            (printPreviewDialog as Form).WindowState = FormWindowState.Maximized;
+            printPreviewDialog.ShowDialog();
+        }
+
+        void printer_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            e.Cancel = !Print(e.Graphics);
+        }
+
+        /// <summary>
+        /// 打印
+        /// </summary>
+        public void Print()
+        {
+        }
         
+
     }
 
     public class UserControlDesigner : ControlDesigner
@@ -321,5 +545,45 @@ namespace CustomDocument.Controls
         /// 备注信息
         /// </summary>
         public string Memo { get; set; }
+    }
+
+    public struct STYLE_CONVERT
+    {
+        public float xPixPermm;   //每0.1mm对应屏幕上的点数
+        public float yPixPermm;
+        public float xScrDPIDiff;
+        public float yScrDPIDiff;
+        public float fDPIX;
+        public float fDPIY;
+    }
+
+    public struct Form_POS
+    {
+        /// <summary>
+        /// 左上角X位置,单位:象素
+        /// </summary>
+        public float Pos_Left;
+        /// <summary>
+        /// 左上角Y位置,单位:象素
+        /// </summary>
+        public float Pos_Top;
+        /// <summary>
+        /// 右下角X位置,单位:象素
+        /// </summary>
+        public float Pos_Right;
+        /// <summary>
+        /// 右下角Y位置,单位:象素
+        /// </summary>
+        public float Pos_Bottom;
+        /// <summary>
+        /// 返回对象宽度，单位：像素
+        /// </summary>
+        /// <returns></returns>
+        public float Width() { return Math.Abs(Pos_Right - Pos_Left); }
+        /// <summary>
+        /// 返回对象高度，单位：像素
+        /// </summary>
+        /// <returns></returns>
+        public float Height() { return Math.Abs(Pos_Bottom - Pos_Top); }
     }
 }
